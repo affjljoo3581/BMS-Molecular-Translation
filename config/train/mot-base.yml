@@ -1,0 +1,57 @@
+data:
+  datasets:
+    main:
+      image_dir: /mnt/bms-dataset/train
+      label_csv_path: /mnt/bms-dataset/train_labels.csv
+    ext-fold0:
+      image_dir: /mnt/bms-dataset/ext/fold0/train
+      label_csv_path: /mnt/bms-dataset/ext/fold0/train_labels.csv
+    ext-fold1:
+      image_dir: /mnt/bms-dataset/ext/fold1/train
+      label_csv_path: /mnt/bms-dataset/ext/fold1/train_labels.csv
+    ext-fold2:
+      image_dir: /mnt/bms-dataset/ext/fold2/train
+      label_csv_path: /mnt/bms-dataset/ext/fold2/train_labels.csv
+    ext-fold3:
+      image_dir: /mnt/bms-dataset/ext/fold3/train
+      label_csv_path: /mnt/bms-dataset/ext/fold3/train_labels.csv
+  
+  tokenizer_path: /mnt/bms-dataset/tokenizer.json
+  val_ratio: 0.01
+
+model:
+  image_size: 224
+  patch_size: 16
+  max_seq_len: 256
+
+  num_encoder_layers: 12
+  num_decoder_layers: 6
+
+  hidden_dim: 768
+  num_attn_heads: 12
+  expansion_ratio: 4
+
+  encoder_dropout_rate: 0.0
+  decoder_dropout_rate: 0.1
+
+train:
+  epochs: 10
+  warmup_steps: 0
+
+  accumulate_grads: 2
+  train_batch_size: 128
+  val_batch_size: 256
+
+  learning_rate: 3.e-5
+  learning_rate_decay: linear
+
+  weight_decay: 0.05
+  max_grad_norm: 0.0
+
+  grad_ckpt_ratio: 0.0
+
+environ:
+  name: MoT-Base
+
+  num_gpus: 1
+  precision: 16

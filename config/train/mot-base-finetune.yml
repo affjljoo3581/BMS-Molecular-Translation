@@ -1,0 +1,43 @@
+data:
+  datasets:
+    main:
+      image_dir: /mnt/bms-dataset/train
+      label_csv_path: /mnt/bms-dataset/train_labels.csv
+
+  tokenizer_path: /mnt/bms-dataset/tokenizer.json
+  val_ratio: 0.01
+
+model:
+  image_size: 384
+  patch_size: 16
+  max_seq_len: 256
+
+  num_encoder_layers: 12
+  num_decoder_layers: 6
+
+  hidden_dim: 768
+  num_attn_heads: 12
+  expansion_ratio: 4
+
+  encoder_dropout_rate: 0.0
+  decoder_dropout_rate: 0.1
+
+train:
+  epochs: 10
+  warmup_steps: 10000
+
+  accumulate_grads: 1
+  train_batch_size: 48
+  val_batch_size: 256
+
+  learning_rate: 1.e-5
+  learning_rate_decay: cosine
+
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+
+environ:
+  name: MoT-Base-Finetune
+
+  num_gpus: 1
+  precision: 16

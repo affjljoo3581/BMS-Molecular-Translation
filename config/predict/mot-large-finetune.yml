@@ -1,0 +1,24 @@
+data:
+  image_dir: /mnt/bms-dataset/test
+  label_csv_path: /mnt/bms-dataset/sample_submission.csv
+  tokenizer_path: /mnt/bms-dataset/tokenizer.json
+
+model:
+  image_size: 384
+  patch_size: 16
+  max_seq_len: 256
+
+  num_encoder_layers: 24
+  num_decoder_layers: 6
+
+  hidden_dim: 768
+  num_attn_heads: 12
+  expansion_ratio: 4
+
+predict:
+  batch_size: 512
+  weight_path: MoT-Large-Finetune.pth
+
+environ:
+  name: MoT-Large-Finetune
+  precision: 16
